@@ -16,5 +16,25 @@
     2.	一个promise指定多个成功/失败回调函数, 都会调用吗?
       当promise改变为对应状态时都会调用
   -->
+
+  <script>
+    const p = new Promise((resolve, reject) => {
+      // resolve(1) // pending ==> resolved
+      // reject(2) // pending ==> rejected
+      // throw 3 // 执行器中抛出异常  pending ==> rejected
+      // resolve(1) // pending ==> resolved
+      // reject(2) //没有任何作用
+    })
+    
+    p.then(
+      value => console.log('onResolved()', value),
+      reason => console.log('onRejected()', reason)
+    )
+    p.then(
+      value => console.log('onResolved2()', value),
+      reason => console.log('onRejected2()', reason)
+    )
+    console.log(p)
+  </script>
 </body>
 </html>

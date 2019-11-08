@@ -39,5 +39,47 @@
         promises: 包含n个promise的数组
         说明: 返回一个新的promise, 第一个完成的promise的结果状态就是最终的结果状态
   -->
+
+  <script>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // resolve(1)
+            reject(2)
+        }, 1000);
+    }).then(value => {
+        console.log('onResolved()', value)
+    }/* , reason => {
+        console.log('onRejected()', reason)
+    } */).catch(reason => {
+        console.log('onRejected2()', reason)
+    })
+
+    /* 创建一个value值为3的promise对象 */
+    const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(3)
+        }, 1000);
+    })
+    const p2 = Promise.resolve(5)
+    const p3 = Promise.reject(4)
+    p1.then(value => console.log('p1 value', value))
+    p2.then(value => console.log('p2 value', value))
+    p3.catch(reason => console.log('p3 value', reason))
+
+    // const p4 = Promise.all([p1, p2, p3])
+    // const p4 = Promise.all([p1, p2])
+    // p4.then(
+    //     values => console.log('p4 all onResolved()', values), // 数据的顺序与promise数组顺序一致
+    //     reason => console.log('p4 all onRejected()', reason),
+    // )
+
+    const p5 = Promise.race([p1, p3, p2])
+    p5.then(
+        value => console.log('p5 race onResolved()', value),
+        reason => console.log('p5 race onRejected()', reason),
+    )
+
+
+  </script>
 </body>
 </html>
