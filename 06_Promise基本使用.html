@@ -37,6 +37,7 @@
             //     3.1) 如果成功了, 调用resolve(), 指定成功的value, 变为resolved状态
             if (time %2== 1) {
                 resolve('成功的数据 ' + time)
+                console.log('resolve()之后')
             } else {//     3.2) 如果失败了, 调用reject(), 指定失败的reason, 变为rejected状态
                 reject('失败的数据 ' + time )
             }
