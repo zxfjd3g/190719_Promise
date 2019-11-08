@@ -31,11 +31,11 @@
       }
     
       /* 1.1 使用纯回调函数封装异步操作 */
-      createAudioFileAsync(audioSettings, successCallback, failureCallback)
+      createAudioFileAsync(audioSettings, successCallback, failureCallback) // 必须在异步任务启动指定回调函数
       
       /* 1.2. 使用Promise封装异步操作 */
       const promise = createAudioFileAsync(audioSettings); // 2
-      setTimeout(() => {
+      setTimeout(() => { // 即使在异步任务完成后指定回调也可以得到结果值
         promise.then(successCallback, failureCallback);
       }, 3000);
       
@@ -43,17 +43,20 @@
       2.1. 回调地狱
       */
       doSomething(function(result) {
+        // 第一个异步任务成功启动第二个异步任务
         doSomethingElse(result, function(newResult) {
+          // 第二个异步任务成功启动第三个异步任务
           doThirdThing(newResult, function(finalResult) {
+            // 第三个异步任务成功了
             console.log('Got the final result: ' + finalResult)
           }, failureCallback)
         }, failureCallback)
       }, failureCallback)
     
       /* 
-      2.2. 使用promise的链式调用解决回调地狱
+      2.2. 使用promise的then()链式调用解决回调地狱
       */
-      doSomething()
+      doSomething()  
         .then(function(result) {
           return doSomethingElse(result)
         })

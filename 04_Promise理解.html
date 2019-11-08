@@ -15,7 +15,7 @@
       1) 从语法上来说: Promise是一个构造函数
       2) 从功能上来说: promise对象用来封装一个异步操作并可以获取其成功/失败的结果值
   -->
-<!-- 
+
   <script>
     var promise1 = new Promise(function(resolve, reject) { // excutor/ 执行器函数, 同步回调函数
       console.log('excutor()')
@@ -28,16 +28,18 @@
     });
     console.log('new Promise()之后')
 
-    promise1.then(function(value) { // 异步执行的成功的回调函数
-      console.log(value);
-      // expected output: "foo"
-    });
+    setTimeout(() => {
+      promise1.then(function(value) { // 异步执行的成功的回调函数
+        console.log(value);
+        // expected output: "foo"
+      });
+    }, 2000);
 
     console.log(promise1);
 
   </script> 
--->
 
+<!-- 
   <script>
     /* 使用Promise封装异步ajax请求 */
     function myAsyncFunction(url) {
@@ -61,6 +63,6 @@
         }
       )
     
-  </script>
+  </script> -->
 </body>
 </html>
