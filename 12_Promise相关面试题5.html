@@ -9,7 +9,7 @@
   <script>
     async function async1() {
       console.log('async1 start')
-      await async2()
+      await async2()  // async2().then(() => {})
       console.log('async1 end')
     }
 
@@ -32,6 +32,11 @@
       console.log('promise2')
     })
     console.log('script end')
+
+    /*
+      宏: []
+      微: []
+      */
 
     /* 
     输出: 
