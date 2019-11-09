@@ -8,6 +8,29 @@
 
 <body>
   
+  <script src="./lib/Promise.js"></script>
+  <script>
+    const p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve(1)
+        // console.log('resolve()之后')
+        
+        // reject(2)
+        // reject(3)
+       
+        console.log('reject()之后')
+      }, 1000)
+      // throw 4
+    })
+    p.then(
+      value => {console.log('onResolved()', value)},
+      reason => {console.log('onRejected()', reason)}
+    )
+    p.then(
+      value => {console.log('onResolved2()', value)},
+      reason => {console.log('onRejected2()', reason)}
+    )
+  </script>
 </body>
 
 </html>

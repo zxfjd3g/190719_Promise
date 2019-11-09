@@ -27,7 +27,13 @@
         // return Promise.resolve(5)
         return Promise.reject(5)
       },
-      reason => console.log('onRejected1()', reason),
+      reason => {
+        console.log('onRejected1()', reason)
+        // throw 4
+        // return 3
+        // return Promise.resolve(5)
+        return Promise.reject(5)
+      }
     ).then(
       value => console.log('onResolved2()', value),
       reason => console.log('onRejected2()', reason),
