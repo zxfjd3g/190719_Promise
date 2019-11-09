@@ -29,10 +29,11 @@
 ## 2. Promise的理解和使用
 ### 2.1. Promise是什么?
     1.抽象表达: 
-        Promise是JS中进行异步编程的新的解决方案(旧的是谁?)
+        Promise是一门新的技术(ES6规范)
+        Promise是JS中进行异步编程的新解决方案(旧的是谁?)
     2.具体表达:
         从语法上来说: Promise是一个构造函数
-        从功能上来说: promise对象用来封装一个异步操作并可以获取其结果
+        从功能上来说: promise对象用来封装一个异步操作并可以获取其成功/失败的结果值
     3. promise的状态改变(只有2种, 只能改变一次)
         pending变为resolved
         pending变为rejected
@@ -58,7 +59,7 @@
         promise.then()返回的新promise的结果状态由什么决定?
         改变promise状态和指定回调函数谁先谁后?
         promise如何串连多个操作任务?
-        promise异常传(穿)透?
+        promise错误穿透?
         中断promise链
 
 ## 3. 自定义Promise
